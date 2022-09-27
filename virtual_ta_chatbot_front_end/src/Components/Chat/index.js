@@ -9,7 +9,6 @@ export const Chat = ({message, setMessage, conversation, setConversation}) => {
     const inputRef = useRef();
     const handleSend = message => {
         setConversation([...conversation, {
-          _id: 3,
           message,
           direction: 'outgoing'
         }]);
