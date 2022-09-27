@@ -1,6 +1,6 @@
 // import React, { useState } from 'react';
 import style from './style.css'
-import {Header} from 'Components/Header'
+import {Header, Chat} from 'Components'
 
 //Chatbot main screen
 const HomeScreen = () => {
@@ -8,6 +8,7 @@ const HomeScreen = () => {
     return (
         <div clasname="Main">
             <Header title="Virtual TA" />
+            <Chat />
         </div>
     )
 }

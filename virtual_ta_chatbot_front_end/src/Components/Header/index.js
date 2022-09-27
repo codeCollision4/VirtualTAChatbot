@@ -4,7 +4,7 @@ import React from "react";
 
 export const Header = ({title}) => {
   return (
-    <header>
+    <header style={{flex:1}} >
       <AppBar>
             <Toolbar>{title}</Toolbar>
         </AppBar>
