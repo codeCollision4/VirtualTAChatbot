@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/codeCollision4/VirtualTAChatbot.git/static/css/main.408fcdea.css",
-    "main.js": "/codeCollision4/VirtualTAChatbot.git/static/js/main.74c3e294.js",
-    "static/js/787.a827704b.chunk.js": "/codeCollision4/VirtualTAChatbot.git/static/js/787.a827704b.chunk.js",
-    "static/media/logo.svg": "/codeCollision4/VirtualTAChatbot.git/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/codeCollision4/VirtualTAChatbot.git/index.html",
-    "main.408fcdea.css.map": "/codeCollision4/VirtualTAChatbot.git/static/css/main.408fcdea.css.map",
-    "main.74c3e294.js.map": "/codeCollision4/VirtualTAChatbot.git/static/js/main.74c3e294.js.map",
-    "787.a827704b.chunk.js.map": "/codeCollision4/VirtualTAChatbot.git/static/js/787.a827704b.chunk.js.map"
+    "main.css": "/codeCollision4/VirtualTAChatbot/static/css/main.408fcdea.css",
+    "main.js": "/codeCollision4/VirtualTAChatbot/static/js/main.9ec04f73.js",
+    "static/js/787.a827704b.chunk.js": "/codeCollision4/VirtualTAChatbot/static/js/787.a827704b.chunk.js",
+    "static/media/logo.svg": "/codeCollision4/VirtualTAChatbot/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/codeCollision4/VirtualTAChatbot/index.html",
+    "main.408fcdea.css.map": "/codeCollision4/VirtualTAChatbot/static/css/main.408fcdea.css.map",
+    "main.9ec04f73.js.map": "/codeCollision4/VirtualTAChatbot/static/js/main.9ec04f73.js.map",
+    "787.a827704b.chunk.js.map": "/codeCollision4/VirtualTAChatbot/static/js/787.a827704b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.408fcdea.css",
-    "static/js/main.74c3e294.js"
+    "static/js/main.9ec04f73.js"
   ]
 }
