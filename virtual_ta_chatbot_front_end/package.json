@@ -1,6 +1,7 @@
 {
   "name": "virtual_ta_chatbot_front_end",
   "version": "0.1.0",
+  "homepage": "https://codecollision4.github.io/VirtualTAChatbot",
   "private": true,
   "dependencies": {
     "@chatscope/chat-ui-kit-react": "^1.9.7",
@@ -18,6 +19,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -42,6 +45,7 @@
     ]
   },
   "devDependencies": {
-    "craco-alias": "^3.0.1"
+    "craco-alias": "^3.0.1",
+    "gh-pages": "^4.0.0"
   }
 }
