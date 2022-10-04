@@ -6,8 +6,9 @@ import { useRef, useState, useEffect } from 'react';
 
 // import TextInput from '../TextInput'
 
-export const Chat = ({message, setMessage, conversation, setConversation}) => {
+export const Chat = ({message, setMessage, conversation, setConversation, height}) => {
     const inputRef = useRef();
+    const messageListRef = useRef();
     const [messageLoad, setMessageLoad] = useState("false")
 
     const handleSend = message => {
@@ -18,6 +19,7 @@ export const Chat = ({message, setMessage, conversation, setConversation}) => {
         }]);
         setMessage("");
         inputRef.current.focus();
+        messageListRef.current.scrollToBottom('auto');
       };
     //Hardcoded load
     useEffect(() => {
@@ -27,10 +29,10 @@ export const Chat = ({message, setMessage, conversation, setConversation}) => {
         return () => clearTimeout(timer);
       }, [messageLoad]);
     return(
-        <div style={{ position: 'fixed', bottom: 0, width: '100%', flex:1 }}>
+        <div style={{ position: 'fixed', bottom: 0, width: '100%', height: height - 64, flex:1 }}>
             <MainContainer>
                 <ChatContainer>       
-                <MessageList scrollBehavior="smooth">
+                <MessageList scrollBehavior="auto" ref={messageListRef} >
                     {conversation.map((msg, index) => 
                     <Message key={index} model={msg}/>
                     )}
