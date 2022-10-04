@@ -34,7 +34,7 @@ export const Chat = ({message, setMessage, conversation, setConversation}) => {
                     {conversation.map((msg, index) => 
                     <Message key={index} model={msg}/>
                     )}
-                <div as="MessageSeparator"> //This is to avoid error of loader not being valid prop
+                <div as="MessageSeparator">
                     <Loading isvisible={messageLoad} align="left" />
                 </div>
                 </MessageList>
