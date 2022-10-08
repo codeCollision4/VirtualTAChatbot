@@ -1,6 +1,6 @@
 import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Loader } from '@chatscope/chat-ui-kit-react';
-import {Loading} from 'Components'
+import { MainContainer, ChatContainer, MessageList, Message, Loader } from '@chatscope/chat-ui-kit-react';
+import {Loading, BottomInput} from 'Components'
 import { useRef, useState, useEffect } from 'react';
 
 
@@ -12,14 +12,16 @@ export const Chat = ({message, setMessage, conversation, setConversation, height
     const [messageLoad, setMessageLoad] = useState("false")
 
     const handleSend = message => {
-        setMessageLoad("true")
-        setConversation([...conversation, {
-          message,
-          direction: 'outgoing'
-        }]);
-        setMessage("");
-        inputRef.current.focus();
-        messageListRef.current.scrollToBottom('auto');
+      if (message.length===0)
+        return
+      setMessageLoad("true")
+      setConversation([...conversation, {
+        message,
+        direction: 'outgoing'
+      }]);
+      setMessage("");
+      inputRef.current.focus();
+      messageListRef.current.scrollToBottom('auto');
       };
     //Hardcoded load
     useEffect(() => {
@@ -32,22 +34,17 @@ export const Chat = ({message, setMessage, conversation, setConversation, height
         <div style={{ position: 'fixed', bottom: 0, width: '100%', height: height - 64, flex:1 }}>
             <MainContainer>
                 <ChatContainer>       
-                <MessageList scrollBehavior="auto" ref={messageListRef} >
-                    {conversation.map((msg, index) => 
-                    <Message key={index} model={msg}/>
-                    )}
-                <div as="MessageSeparator">
-                    <Loading isvisible={messageLoad} align="left" />
-                </div>
-                </MessageList>
-                <MessageInput
-                    attachButton={false} 
-                    onSend={handleSend}
-                    placeholder="Talk with TA here"
-                    value={message}
-                    onChange={(val) => setMessage(val)}
-                    ref={inputRef}
-                />          
+                  <MessageList scrollBehavior="auto" ref={messageListRef} >
+                      {conversation.map((msg, index) => 
+                      <Message key={index} model={msg}/>
+                      )}
+                  <div as="MessageSeparator">
+                      <Loading isvisible={messageLoad} align="left" />
+                  </div>
+                  </MessageList>
+                  <div as="MessageInput" >
+                    <BottomInput handleSend={handleSend} message={message} setMessage={setMessage} inputRef={inputRef} />
+                  </div>
                 </ChatContainer>
             </MainContainer>
         </div>
