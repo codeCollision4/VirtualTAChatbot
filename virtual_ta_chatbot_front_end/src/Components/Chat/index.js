@@ -1,6 +1,6 @@
 import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Loader } from '@chatscope/chat-ui-kit-react';
-import {Loading} from 'Components'
+import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Loader, MessageSeparator } from '@chatscope/chat-ui-kit-react';
+import { Loading, Separator } from 'Components'
 import { useRef, useState, useEffect } from 'react';
 
 
@@ -33,6 +33,7 @@ export const Chat = ({message, setMessage, conversation, setConversation, height
             <MainContainer>
                 <ChatContainer>       
                 <MessageList scrollBehavior="auto" ref={messageListRef} >
+                <MessageSeparator content="Monday" />
                     {conversation.map((msg, index) => 
                     <Message key={index} model={msg}/>
                     )}
