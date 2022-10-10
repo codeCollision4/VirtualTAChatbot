@@ -33,7 +33,7 @@ export const Chat = ({message, setMessage, conversation, setConversation, height
             <MainContainer>
                 <ChatContainer>       
                 <MessageList scrollBehavior="auto" ref={messageListRef} >
-                <MessageSeparator content="Monday" />
+                <MessageSeparator content={Date().toLocaleString()} />
                     {conversation.map((msg, index) => 
                     <Message key={index} model={msg}/>
                     )}
