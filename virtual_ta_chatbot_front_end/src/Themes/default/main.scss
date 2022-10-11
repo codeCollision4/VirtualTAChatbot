@@ -22,7 +22,7 @@
   --primary_color: white;
   --secondary_color: white;
   --text_color: white;//rgba(255, 255, 255, 0.87);
-  --background_color: #b00cb3;
+  --background_color: white;
   $number: 0;
   --isDark: false;
   color: 0;
@@ -38,6 +38,9 @@ $input-toolbox-send-btn-color: #6EAAD8;
 $chat-container-message-input-bg-color: var(--background_color);
 $chat-container-bg-color: var(--background_color);
 $main-container-border: 0;
+
+$message-separator-bg-color: var(--background_color);
+$message-separator-color:var(--secondary_color);
 // $message-input-border-left: 0;
 
 
