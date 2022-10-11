@@ -1,7 +1,6 @@
-// import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import styles from './styles.scss'
-import { MainContainer, ChatContainer, MessageList, Message, Loader } from '@chatscope/chat-ui-kit-react';
-import {Loading, BottomInput} from 'Components'
+import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Loader, MessageSeparator } from '@chatscope/chat-ui-kit-react';
+import { Loading, Separator, BottomInput } from 'Components'
 import { useRef, useState, useEffect } from 'react';
 
 
@@ -35,19 +34,18 @@ export const Chat = ({message, setMessage, conversation, setConversation, height
         <div style={{ position: 'fixed', bottom: 0, width: '100%', height: height - 64, flex:1 }}>
             <MainContainer>
                 <ChatContainer>       
-                  <MessageList scrollBehavior="auto" ref={messageListRef}
-                  
-                  >
-                      {conversation.map((msg, index) => 
-                      <Message className={styles.message} key={index} model={msg} style={{}} />
-                      )}
-                  <div as="MessageSeparator">
-                      <Loading isvisible={messageLoad} align="left" />
-                  </div>
-                  </MessageList>
-                  <div as="MessageInput" >
+                <MessageList scrollBehavior="auto" ref={messageListRef} >
+                <MessageSeparator content={Date().toLocaleString()} />
+                    {conversation.map((msg, index) => 
+                    <Message key={index} model={msg}/>
+                    )}
+                <div as="MessageSeparator">
+                    <Loading isvisible={messageLoad} align="left" />
+                </div>
+                </MessageList>
+                <div as="MessageInput" >
                     <BottomInput handleSend={handleSend} message={message} setMessage={setMessage} inputRef={inputRef} />
-                  </div>
+                  </div>       
                 </ChatContainer>
             </MainContainer>
         </div>
