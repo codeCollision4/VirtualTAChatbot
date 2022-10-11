@@ -6,7 +6,7 @@ import Themes from '../../Themes'
 
 function App() {
   //Change to use different theme
-  const [themeNumber, setThemeNumber] = useState(1);
+  const [themeNumber, setThemeNumber] = useState(0);
   return (
     <Themes themeNumber={themeNumber}  >
       <HomeScreen />

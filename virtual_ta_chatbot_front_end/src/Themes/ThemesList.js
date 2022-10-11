@@ -19,7 +19,6 @@ const themes = [
       backgroundColor: Theme1.backgroundColor,
       textColor: Theme1.textColor,
       theme: setTheme(Theme1.primaryColor, Theme1.secondaryColor),
-      isDark: false,
     },
     {
       name: 'theme2',
@@ -28,7 +27,6 @@ const themes = [
       backgroundColor: Theme2.backgroundColor,
       textColor: Theme2.textColor,
       theme: setTheme(Theme2.primaryColor, Theme2.secondaryColor),
-      isDark: true,
     }
 ]
 export default themes
