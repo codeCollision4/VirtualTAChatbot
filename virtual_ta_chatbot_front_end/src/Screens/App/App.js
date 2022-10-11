@@ -1,12 +1,15 @@
-import logo from '../../Assets/logo.svg';
 import HomeScreen from '../HomeScreen'
-import './App.css';
+import '../../Themes/default/main.scss';
+
+import { useState } from 'react';
+import Themes from '../../Themes'
 
 function App() {
+  const [themeNumber, setThemeNumber] = useState(0);
   return (
-    <div className="App">
-        <HomeScreen />
-    </div>
+    <Themes themeNumber={themeNumber}  >
+      <HomeScreen />
+    </Themes>
   );
 }
 

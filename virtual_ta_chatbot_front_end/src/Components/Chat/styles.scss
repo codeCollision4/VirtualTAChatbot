@@ -1,0 +1,9 @@
+/* The path depends on the current location of the scss file */
+
+// Here you can override variables from the imported file above. Check its source for a list of available variables
+.message{
+    $main-container-border: 0;
+    $color-text: red;
+    $conversation-color: pink;
+    $color-primary: red;
+}
