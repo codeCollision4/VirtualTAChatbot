@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import style from './style.css'
 import {Header, Chat, TextInput} from 'Components'
+import { useTheme } from '@material-ui/styles';
 
 //Chatbot main screen
 const HomeScreen = () => {
+    const theme = useTheme();
     const [message, setMessage] = useState('')
     const [conversation, setConversation] = useState([
         {

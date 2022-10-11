@@ -1,0 +1,119 @@
+
+@charset "utf-8";
+// @import "../../../node_modules/@chatscope/chat-ui-kit-styles/themes/default/main";
+
+//Themeing
+//@import 'override.scss';
+
+// .testTheme{
+//     $color-primary: rgb(235, 6, 155);
+//     $main-container-border: 0;
+//     $color-text: red;
+//     $conversation-color: pink;
+// }
+
+// @mixin themable($theme-name, $color-primary, $color-primary-light) {
+//     .#{$theme-name} {
+//         $color-primary: red;
+//         $color-primary-light: $color-primary-light;
+//     }
+// }
+:root {
+  --primary_color: white;
+  --secondary_color: white;
+  --text_color: white;//rgba(255, 255, 255, 0.87);
+  --background_color: #b00cb3;
+  $number: 0;
+  --isDark: false;
+  color: 0;
+}
+
+$color-primary: var(--primary_color);
+$color-secondary: var(--secondary_color);
+// dark{
+$color-text: var(--text_color);
+$message-list-bg-color: var(--background_color);
+
+$input-toolbox-send-btn-color: #6EAAD8;
+$chat-container-message-input-bg-color: var(--background_color);
+$chat-container-bg-color: var(--background_color);
+$main-container-border: 0;
+// $message-input-border-left: 0;
+
+
+// $message-input-bg-color: #b00cb3;
+
+// $message-input-content-editor-color: #170cb3;
+// $message-input-content-editor-wrapper-bg-color: #b00cb3;
+// $message-input-content-editor-container-bg-color: #0cb34f;
+// $message-input-content-editor-bg-color: #97b30c;
+$number: 0;
+// $default-bg-color: var(--background_color);
+// }
+// $color-text:  rgba(255, 255, 255, 0.87); 
+
+// @if testbool == false{
+//   $color-text:  rgba(255, 255, 255, 0.87); 
+// }@else {
+//   $color-text:  rgba(255, 255, 255, 0.87); 
+// }
+// $number: #{$number};
+// $color: 255;
+// $color-text: rgba($color, $color, $color, 0.87); 
+// $message-color: var(--text_color);
+// $message-incoming-color: var(--text_color);
+// $default-bg-color: var(--background_color);
+// $white: 255;
+// $black: 0;
+// $color-white: #fff;
+// $default-bg-color: #fff;
+//todo changed the background color and it works, now change it dynamically
+// $color: 255;
+// @debug "Hii";
+// @debug var(--text_color);
+// @if $default-bg-color == var(--background_color){$color: 255;}
+// @if $default-bg-color == $color-white{$color: 255;}
+// $color-text:  rgba($number, $number, $number, 0.87); 
+
+
+
+
+// $isDark: var(--text_color);
+// @if var(--text_color) == #ffff{
+//   $color-text: rgba(255, 255, 255, 0.87);
+// }
+// @else 
+// {
+//   $color-text: rgba(255, 255, 255, 0.87);
+// } 
+// $color-text: rgba(--text_color);
+// $color-text: rgba(255, 255, 255, 0.87);
+// @if var(--isDark)==true{ $color-text: rgba(255, 255, 255, 0.87)};
+
+
+// @include themable(testTheme, #f7eb80, #497265);
+
+@import "helpers/functions";
+@import "components/main-container";
+@import "components/message";
+@import "components/message-group";
+@import "components/message-separator";
+@import "components/message-list";
+@import "components/avatar";
+@import "components/avatar-group";
+@import "components/message-input";
+@import "components/input-toolbox";
+@import "components/chat-container";
+@import "components/typing-indicator";
+@import "components/conversation-header";
+@import "components/conversation";
+@import "components/conversation-list";
+@import "components/status";
+@import "components/sidebar";
+@import "components/expansion-panel";
+@import "components/search";
+@import "components/buttons";
+@import "components/loader";
+@import "components/overlay";
+@import "components/status-list";
+@import "components/perfect-scrollbar";
