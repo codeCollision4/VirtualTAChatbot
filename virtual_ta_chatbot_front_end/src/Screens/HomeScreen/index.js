@@ -4,7 +4,7 @@ import {Header, Chat, TextInput} from 'Components'
 import { useTheme } from '@material-ui/styles';
 
 //Chatbot main screen
-const HomeScreen = () => {
+const HomeScreen = ({themeNumber, setThemeNumber}) => {
     const theme = useTheme();
     const [message, setMessage] = useState('')
     const [conversation, setConversation] = useState([
@@ -35,7 +35,7 @@ const HomeScreen = () => {
     
     return (
         <div clasname="Main">
-            <Header title="Virtual TA" />
+            <Header title="Virtual TA" themeNumber={themeNumber} setThemeNumber={setThemeNumber}/>
             <Chat
                 message={message}
                 setMessage={setMessage}
