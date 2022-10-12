@@ -9,7 +9,7 @@ function App() {
   const [themeNumber, setThemeNumber] = useState(0);
   return (
     <Themes themeNumber={themeNumber}  >
-      <HomeScreen />
+      <HomeScreen themeNumber={themeNumber} setThemeNumber={setThemeNumber}  />
     </Themes>
   );
 }
