@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/VirtualTAChatbot/static/css/main.fe53c5ca.css",
-    "main.js": "/VirtualTAChatbot/static/js/main.cd07a5a0.js",
+    "main.js": "/VirtualTAChatbot/static/js/main.d8f876fb.js",
     "static/js/787.a827704b.chunk.js": "/VirtualTAChatbot/static/js/787.a827704b.chunk.js",
     "index.html": "/VirtualTAChatbot/index.html",
     "main.fe53c5ca.css.map": "/VirtualTAChatbot/static/css/main.fe53c5ca.css.map",
-    "main.cd07a5a0.js.map": "/VirtualTAChatbot/static/js/main.cd07a5a0.js.map",
+    "main.d8f876fb.js.map": "/VirtualTAChatbot/static/js/main.d8f876fb.js.map",
     "787.a827704b.chunk.js.map": "/VirtualTAChatbot/static/js/787.a827704b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fe53c5ca.css",
-    "static/js/main.cd07a5a0.js"
+    "static/js/main.d8f876fb.js"
   ]
 }
