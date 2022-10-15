@@ -4,6 +4,7 @@ import FunctionsRoundedIcon from '@mui/icons-material/FunctionsRounded';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import Modal from 'react-modal';
 import React from 'react';
+import {Moda} from 'Components';
 export const BottomInput = ({
     handleSend,
     message,
@@ -47,9 +48,7 @@ export const BottomInput = ({
             <IconButton aria-label="Send" onClick={() => handleSend(message)} disabled={message.length==0} color={"secondary"} >
                 <SendRoundedIcon  style={{marginTop:0, paddingLeft: "0.2em",paddingRight: "0.2em",}}  />
             </IconButton>
-            <IconButton aria-label="Equation" onClick={openModal} color="secondary" >
-                <FunctionsRoundedIcon style={{marginTop:0, paddingLeft: "0.2em",paddingRight: "0.2em",}}  />
-            </IconButton>
+            <Moda />
         </div>
     )
 }
