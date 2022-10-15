@@ -22,6 +22,10 @@ export const Chat = ({message, setMessage, conversation, setConversation, height
       setMessage("");
       inputRef.current.focus();
       messageListRef.current.scrollToBottom('auto');
+      localStorage.setItem("conversation0", JSON.stringify([...conversation, {
+        message,
+        direction: 'outgoing'
+      }]));
       };
     //Hardcoded load
     useEffect(() => {
