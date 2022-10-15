@@ -32,6 +32,12 @@ export const Moda = ({}) => {
             >
                 <Box sx={style}>
                     <button onClick={handleClose}>close</button>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        Click around the modal to find the text box and try typing the quad formula
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 5 }}>
+                        <math-field virtual-keyboard-mode="mode"></math-field>
+                    </Typography>
                 </Box>
             </Modal>
         </div>
