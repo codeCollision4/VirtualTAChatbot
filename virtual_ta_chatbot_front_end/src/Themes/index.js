@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import themes from './ThemesList'
 import { createTheme, ThemeProvider } from "@material-ui/core";
 
-const Themes = (props) => {
+const Themes = (props,) => {
     // console.log(themes[props.themeNumber])
     //This will set the chat ui kit to change it's color
     useEffect(() => {
@@ -20,15 +20,6 @@ const Themes = (props) => {
             '--text_color', themes[props.themeNumber].textColor,
             // '--text_color', themes[props.themeNumber].textColor,
         );
-        root.style.setProperty(
-            'number', 0,//themes[props.themeNumber].isDark,
-        );
-        // root.style.setProperty(
-        //     '--color', themes[props.themeNumber].textColor,
-        // );
-        // root.style.setProperty(
-        //     '--secondary_color', themes[props.themeNumber].secondary_color
-        // );
       }, [props.themeNumber]);
 
     // console.log("props",props)
