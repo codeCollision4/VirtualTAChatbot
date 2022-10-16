@@ -3,3 +3,4 @@ export * from './Chat';
 export * from './Loading';
 export * from './Separator'
 export * from './BottomInput'
+export * from './Moda'
