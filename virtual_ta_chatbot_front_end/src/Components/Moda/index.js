@@ -1,7 +1,6 @@
-import { Modal, IconButton } from '@material-ui/core';
+import { Modal, IconButton, Typography, Box } from '@mui/material';
 import * as React from 'react';
 import FunctionsRoundedIcon from '@mui/icons-material/FunctionsRounded';
-import Box from '@mui/material/Box';
 
 const style = {
     position: 'absolute',
