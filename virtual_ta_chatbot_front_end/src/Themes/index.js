@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import themes from './ThemesList'
-import { createTheme, ThemeProvider } from "@material-ui/core";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const Themes = (props,) => {
-    // console.log(themes[props.themeNumber])
     //This will set the chat ui kit to change it's color
     useEffect(() => {
         const root = document.documentElement;
@@ -22,7 +21,6 @@ const Themes = (props,) => {
         );
       }, [props.themeNumber]);
 
-    // console.log("props",props)
     const theme = themes[props.themeNumber].theme
     return(
         <ThemeProvider theme={theme}>
