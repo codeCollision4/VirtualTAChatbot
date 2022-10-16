@@ -34,6 +34,6 @@ module.exports = (app, jsonParser) => {
   app.post("/text-input", jsonParser, async (req, res) => {
     getAgentResponse(req.body.text)
       .then(data => res.status(200).send(data))
-      .catch(err => console.log("ERROR ", err));
+      .catch(err => console.error("ERROR ", err));
 })
 };
