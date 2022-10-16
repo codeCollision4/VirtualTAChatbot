@@ -5,8 +5,13 @@ import { useState } from 'react';
 import Themes from '../../Themes'
 
 function App() {
-  //Change to use different theme
-  const [themeNumber, setThemeNumber] = useState(0);
+  //Global Theme of app
+  const [themeNumber, setThemeNumber] = useState(() => {
+    //Gets previous theme
+    let currentTheme = localStorage.getItem("currentTheme");
+    let initialValue = JSON.parse(currentTheme)
+    return parseInt(initialValue) || 0;
+  });
   return (
     <Themes themeNumber={themeNumber}  >
       <HomeScreen themeNumber={themeNumber} setThemeNumber={setThemeNumber}  />

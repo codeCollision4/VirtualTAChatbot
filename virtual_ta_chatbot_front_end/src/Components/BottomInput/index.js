@@ -1,5 +1,5 @@
 import { MessageInput, AttachmentButton, InputToolbox, SendButton, InfoButton } from '@chatscope/chat-ui-kit-react';
-import { IconButton } from '@material-ui/core';
+import { IconButton } from '@mui/material';
 import FunctionsRoundedIcon from '@mui/icons-material/FunctionsRounded';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import Modal from 'react-modal';
