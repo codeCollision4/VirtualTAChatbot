@@ -1,4 +1,4 @@
-import {SwipeableDrawer, Box, MenuItem, IconButton, Drawer, ListItem, List, ListItemText, Divider} from '@material-ui/core';
+import {SwipeableDrawer, MenuItem, Box, IconButton, Drawer, ListItem, List, ListItemText, Divider} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HistoryIcon from '@mui/icons-material/History';
 import ListItemButton from '@mui/material/ListItemButton';

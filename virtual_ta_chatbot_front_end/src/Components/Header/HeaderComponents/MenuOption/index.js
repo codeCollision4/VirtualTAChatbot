@@ -1,14 +1,8 @@
-import {SwipeableDrawer, Box, MenuItem, IconButton, ListItem, List, ListItemText, Divider, Collapse} from '@material-ui/core';
-import {Drawer} from '@mui/material';
+import {ListItemButton, ListItemIcon, SwipeableDrawer, Box, MenuItem, ListItem, List, ListItemText, Divider, Collapse, IconButton} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HistoryIcon from '@mui/icons-material/History';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
 import React,{useState, useEffect} from 'react'
 import { useTheme } from "@mui/material/styles";
-import {HistoryMenu} from '../'
 
 export const MenuOption = ({memory, setConversation}) => {
     const [open, setOpen] = useState(false)
@@ -35,9 +29,9 @@ export const MenuOption = ({memory, setConversation}) => {
       setConversation(mem)
       setOpen(false)
     }
-    const list = (anchor: Anchor) => (
+    const list = () => (
         <Box
-          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+          sx={{ width: 250 }}
           role="presentation"
           color="inherit"
           // onClick={toggleDrawer(false)}
@@ -63,40 +57,30 @@ export const MenuOption = ({memory, setConversation}) => {
                       <ListItemText primary={mem!==null ? "History " + (index + 1) : "Not Available" } />
                       </ListItemButton> 
                   ))}
-                  {/* <ListItemButton sx={{ pl: 4 }} onClick={historyOptionPress} >
-                      <ListItemIcon>
-                      </ListItemIcon>
-                      <ListItemText primary="Starred" />
-                  </ListItemButton> */}
                 </List>
             </Collapse>
           </List>
-          <Divider />
         </Box>
       );
     return(
-    <div>
+      <div>
         <IconButton 
             edge="start"
             color="inherit"
             aria-label="open drawer"
             onClick={toggleDrawer(true)}
-            sx={{ mr: 2, display: { xs: 'block', sm: 'none',}, }}>   
+            sx={{}}>   
             <MenuIcon />
-            </IconButton>
-
-            <Drawer            
+          </IconButton>
+          <SwipeableDrawer            
                 anchor="right"
                 variant="temporary"
                 color={theme.palette.background.default}
                 open={open}
                 onClose={toggleDrawer(false)}>
                 
-                <Box>
-                {list}
-                </Box>
-            </Drawer>
-            <HistoryMenu  />
-    </div>
+                {list()}
+            </SwipeableDrawer>
+      </div>
     )
 }
