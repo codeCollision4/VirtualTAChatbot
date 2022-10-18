@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 var jsonParser = bodyParser.json()
+app.use(jsonParser);
  
 require("./routes/agentRoutes")(app, jsonParser);
 
