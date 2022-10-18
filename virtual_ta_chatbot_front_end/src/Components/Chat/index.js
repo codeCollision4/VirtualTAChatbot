@@ -1,5 +1,5 @@
 import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Loader, MessageSeparator } from '@chatscope/chat-ui-kit-react';
+import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Loader, MessageSeparator, Avatar } from '@chatscope/chat-ui-kit-react';
 import { Loading, Separator, BottomInput } from 'Components'
 import { useRef, useState, useEffect } from 'react';
 
@@ -43,6 +43,8 @@ export const Chat = ({message, setMessage, conversation, setConversation, height
                     {conversation.map((msg, index) => 
                     <Message key={index} model={msg}/>
                     )}
+                    {/* <Avatar src={'https://chatscope.io/storybook/react/static/media/zoe.e31a4ff8.svg'} name={"Zoe"} size="md" />
+                    <Message.ImageContent src={'https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=600'} width={200} /> */}
                 <div as="MessageSeparator">
                     <Loading isvisible={messageLoad} align="left" />
                 </div>
