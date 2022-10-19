@@ -26,6 +26,8 @@ export const BottomInput = ({
             alignItems:'center',
           }}>
             <MessageInput
+                // disabled={disabled}
+                autoFocus
                 attachButton={false} 
                 onSend={handleSend}
                 placeholder="Talk with TA here"

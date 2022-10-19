@@ -627,7 +627,8 @@ $message-input-content-editor-wrapper-bg-color: $color-primary !default;
 $message-input-content-editor-container-bg-color: $message-input-content-editor-wrapper-bg-color !default;
 $message-input-content-editor-bg-color: $message-input-content-editor-wrapper-bg-color !default;
 $message-input-content-editor-disabled-color: $color-text-medium !default;
-$message-input-content-editor-disabled-bg-color: rgba($message-input-content-editor-bg-color, 0.38) !default;
+//Changed so the color doesn't change whenever the message input is disable
+$message-input-content-editor-disabled-bg-color: $color-primary !default;
 
 // Fonts
 $message-input-content-editor-font-family: $default-font-family !default;

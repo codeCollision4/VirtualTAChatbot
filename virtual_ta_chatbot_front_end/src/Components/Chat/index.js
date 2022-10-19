@@ -10,22 +10,53 @@ export const Chat = ({message, setMessage, conversation, setConversation, height
     const inputRef = useRef();
     const messageListRef = useRef();
     const [messageLoad, setMessageLoad] = useState("false")
+    const [inputDisabled, setInputDisabled] = useState(false)
 
     const handleSend = message => {
       if (message.length===0)
         return
+      if (inputDisabled)
+        return
       setMessageLoad("true")
-      setConversation([...conversation, {
+      setInputDisabled(true)
+      let userMessage = {
         message,
         direction: 'outgoing'
-      }]);
+      }
+      setConversation([...conversation, userMessage]);
+      console.log(JSON.stringify(message));
+      let responseMessage
+      fetch('http://localhost:5000/text-input', {
+        method: 'POST',
+        body: JSON.stringify({
+            text: message,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+         // change here using .json()
+         .then((response) => response.json())
+         .then((data) => {
+          responseMessage = {
+            message: data.fulfillmentText,
+            direction: 'incoming',
+          }
+          setConversation([...conversation, userMessage,  responseMessage])
+          setMessageLoad("false")
+          setInputDisabled(false)
+          inputRef.current.focus();
+          localStorage.setItem("conversation0", JSON.stringify([...conversation, userMessage,  responseMessage]));
+          // console.log("responseMessage", responseMessage)
+          
+          console.log(data);
+         })
+         .catch((err) => {
+            console.log("eer",err.message);
+            console.log(err);
+         });
       setMessage("");
-      inputRef.current.focus();
       messageListRef.current.scrollToBottom('auto');
-      localStorage.setItem("conversation0", JSON.stringify([...conversation, {
-        message,
-        direction: 'outgoing'
-      }]));
       };
     //Hardcoded load
     useEffect(() => {
@@ -41,7 +72,7 @@ export const Chat = ({message, setMessage, conversation, setConversation, height
                 <MessageList scrollBehavior="auto" ref={messageListRef} >
                 <MessageSeparator content={Date().toLocaleString()} />
                     {conversation.map((msg, index) => 
-                    <Message key={index} model={msg}/>
+                      <Message key={index} model={msg}/>
                     )}
                     {/* <Avatar src={'https://chatscope.io/storybook/react/static/media/zoe.e31a4ff8.svg'} name={"Zoe"} size="md" />
                     <Message.ImageContent src={'https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=600'} width={200} /> */}
@@ -50,7 +81,7 @@ export const Chat = ({message, setMessage, conversation, setConversation, height
                 </div>
                 </MessageList>
                 <div as="MessageInput" >
-                    <BottomInput handleSend={handleSend} message={message} setMessage={setMessage} inputRef={inputRef} />
+                    <BottomInput handleSend={handleSend} message={message} setMessage={setMessage} inputRef={inputRef}  />
                   </div>       
                 </ChatContainer>
             </MainContainer>
