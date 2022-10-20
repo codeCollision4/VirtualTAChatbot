@@ -2,7 +2,7 @@ import { MessageInput, AttachmentButton, InputToolbox, SendButton, InfoButton } 
 import { IconButton } from '@mui/material';
 import FunctionsRoundedIcon from '@mui/icons-material/FunctionsRounded';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 import React from 'react';
 import {Moda} from 'Components';
 export const BottomInput = ({
@@ -41,12 +41,12 @@ export const BottomInput = ({
                 }}
                 sendButton={false}
             />
-            <Modal 
+            {/* <Modal 
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
             >
                 <button onClick={closeModal}>close</button>
-            </Modal>
+            </Modal> */}
             <IconButton aria-label="Send" onClick={() => handleSend(message)} disabled={message.length==0} color={"secondary"} >
                 <SendRoundedIcon  style={{marginTop:0, paddingLeft: "0.2em",paddingRight: "0.2em",}}  />
             </IconButton>
