@@ -77,7 +77,9 @@ export const MenuOption = ({memory, setConversation}) => {
                 variant="temporary"
                 color={theme.palette.background.default}
                 open={open}
-                onClose={toggleDrawer(false)}>
+                onClose={toggleDrawer(false)}
+                onOpen={toggleDrawer(true)}
+                >
                 
                 {list()}
             </SwipeableDrawer>

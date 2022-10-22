@@ -15,8 +15,18 @@ const setTheme = (color1, color2, color3, color4) => createTheme({
       },
       text:{
         primary: color4,
+      },
+    },
+    components: {
+      MuiToolbar: {
+          styleOverrides: {
+              dense: {
+                  height: 64,
+                  minHeight: 64,
+              }
+          }
       }
-    }
+    },
   });
 const themes = [
     {

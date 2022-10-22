@@ -1,16 +1,15 @@
-import {AppBar} from '@mui/material';
-import { Toolbar, Grid, Box, Typography, IconButton, Menu, Button} from '@mui/material';
+import { AppBar, Toolbar, Grid, Box, Typography, IconButton, Menu, Button} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import {ThemeSelector, MenuOption} from './HeaderComponents'
+import {ThemeSelector, MenuOption, SidebarButton} from './HeaderComponents'
 import React from "react";
 
 
 
-export const Header = ({title, themeNumber, setThemeNumber, memory, setConversation}) => {
+export const Header = ({title, themeNumber, setThemeNumber, memory, setConversation, setSidebarVisible, sidebarVisible}) => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-    <AppBar position="static">
-        <Toolbar>
+    <AppBar position="static" >
+        <Toolbar variant="dense">
+          <SidebarButton setSidebarVisible={setSidebarVisible} sidebarVisible={sidebarVisible}  />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {title}
           </Typography>
@@ -18,6 +17,5 @@ export const Header = ({title, themeNumber, setThemeNumber, memory, setConversat
           <MenuOption memory={memory} setConversation={setConversation} />
         </Toolbar>
       </AppBar>
-      </Box>
   );
 }
