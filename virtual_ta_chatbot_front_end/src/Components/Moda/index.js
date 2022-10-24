@@ -22,7 +22,7 @@ export const Moda = ({}) => {
 
     return (
         <div>
-            <IconButton aria-label="Equation" onClick={handleOpen} color="secondary" >
+            <IconButton aria-label="Equation" onClick={handleOpen} color="primary" >
                 <FunctionsRoundedIcon style={{marginTop:0, paddingLeft: "0.2em",paddingRight: "0.2em",}}  />
             </IconButton>
             <Modal

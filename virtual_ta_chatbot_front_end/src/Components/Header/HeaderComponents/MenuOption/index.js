@@ -1,6 +1,7 @@
 import {ListItemButton, ListItemIcon, SwipeableDrawer, Box, MenuItem, ListItem, List, ListItemText, Divider, Collapse, IconButton} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HistoryIcon from '@mui/icons-material/History';
+import {HistoryMenu} from './'
 import React,{useState, useEffect} from 'react'
 import { useTheme } from "@mui/material/styles";
 
@@ -22,27 +23,22 @@ export const MenuOption = ({memory, setConversation}) => {
     }, []);
     const historyPress = () => {
         setExpanded(expanded=> !expanded)
-        // setOpen(false)
-        // setConversation()
     }
     const historyOptionPress = (mem) => {
       setConversation(mem)
       setOpen(false)
     }
-    const list = () => (
+    const historyList = () => (
         <Box
           sx={{ width: 250 }}
           role="presentation"
           color="inherit"
-          // onClick={toggleDrawer(false)}
-          // onKeyDown={toggleDrawer(false)}
         >
           <List>
               <ListItem >
                 <ListItemButton onClick={historyPress} >
                   <ListItemIcon  >
                    <HistoryIcon style={{ color: theme.palette.text.primary }} 
-                   //Dont ask why I had to set the style just to change the color...
                    />
                   </ListItemIcon>
                   <ListItemText primary={'History'} />
@@ -81,7 +77,7 @@ export const MenuOption = ({memory, setConversation}) => {
                 onOpen={toggleDrawer(true)}
                 >
                 
-                {list()}
+                {historyList()}
             </SwipeableDrawer>
       </div>
     )

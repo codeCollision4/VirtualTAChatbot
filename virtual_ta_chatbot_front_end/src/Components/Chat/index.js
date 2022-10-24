@@ -1,6 +1,6 @@
 import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Loader, MessageSeparator, Avatar, Sidebar, Search } from '@chatscope/chat-ui-kit-react';
-import { Loading, Separator, BottomInput } from 'Components'
+import { Loading, Separator, BottomInput, SidebarSection } from 'Components'
 import { useRef, useState, useEffect } from 'react';
 
 
@@ -81,15 +81,6 @@ export const Chat = ({
             width: "40%",
             maxWidth: "40%"
           });
-          // setConversationContentStyle({
-          //   display: "flex"
-          // });
-          // setConversationAvatarStyle({
-          //   marginRight: "1em"
-          // });
-          // setChatContainerStyle({
-          //   display: "none"
-          // });
         } else {
           setSidebarStyle({
             width: "0%",
@@ -104,24 +95,27 @@ export const Chat = ({
     return(
         <div style={{ position: 'fixed', bottom: 0, width: '100%', height: height - 64, flex:1 }}>
             <MainContainer responsive>
-              <Sidebar position="left" scrollable={false} style={sidebarStyle}>
-              {/* <Search placeholder="Search..." /> */}
-              </Sidebar>
+                <SidebarSection sidebarStyle={sidebarStyle} />
                 <ChatContainer>       
-                <MessageList scrollBehavior="auto" ref={messageListRef} >
-                <MessageSeparator content={Date().toLocaleString()} />
+                  <MessageList scrollBehavior="auto" ref={messageListRef} >
+                  <MessageSeparator content={Date().toLocaleString()} />
                     {conversation.map((msg, index) =>
                       <Message key={index} model={msg}>
-                        <Avatar src={'https://chatscope.io/storybook/react/static/media/joe.641da105.svg'} name={"Zoe"} size="md" />
-                      </Message>
+                        {msg.direction==='incoming' ?
+                          <Avatar src={'https://chatscope.io/storybook/react/static/media/joe.641da105.svg'} name={"Zoe"} size="md" />
+                          : null
+                        }
+                        {msg.message==='img' ?
+                        <Message.ImageContent src={'https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=600'} width={200} />
+                        : null
+                        }
+                        </Message>
                     )}
-                    {/* <Avatar src={'https://chatscope.io/storybook/react/static/media/zoe.e31a4ff8.svg'} name={"Zoe"} size="md" /> */}
-                    <Message.ImageContent src={'https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=600'} width={200} />
-                <div as="MessageSeparator">
-                    <Loading isvisible={messageLoad} align="left" />
-                </div>
-                </MessageList>
-                <div as="MessageInput" >
+                  <div as="MessageSeparator">
+                      <Loading isvisible={messageLoad} align="left" />
+                  </div>
+                  </MessageList>
+                  <div as="MessageInput" >
                     <BottomInput handleSend={handleSend} message={message} setMessage={setMessage} inputRef={inputRef}  />
                   </div>       
                 </ChatContainer>
