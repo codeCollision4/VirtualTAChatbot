@@ -2,7 +2,8 @@ import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Loader, MessageSeparator, Avatar, Sidebar, Search } from '@chatscope/chat-ui-kit-react';
 import { Loading, Separator, BottomInput, SidebarSection } from 'Components'
 import { useRef, useState, useEffect } from 'react';
-
+import { flatten } from 'flatten-anything'
+// import _ from 'lodash'
 
 // import TextInput from '../TextInput'
 
@@ -34,8 +35,8 @@ export const Chat = ({
         direction: 'outgoing'
       }
       setConversation([...conversation, userMessage]);
-      console.log(JSON.stringify(message));
-      let responseMessage
+      let responseMessage = [...conversation]
+      responseMessage.push(userMessage)
       fetch('http://localhost:5000/text-input', {
         method: 'POST',
         body: JSON.stringify({
@@ -47,32 +48,56 @@ export const Chat = ({
       })
          .then((response) => response.json())
          .then((data) => {
-          responseMessage = {
-            message: data.fulfillmentText,
-            direction: 'incoming',
-          }
-          setConversation([...conversation, userMessage,  responseMessage])
+          data.fulfillmentMessages.map((msg, index) => {
+            responseMessage.push(parseMessage(msg))
+          })
+          setConversation([...responseMessage  ])
           setMessageLoad("false")
           setInputDisabled(false)
           inputRef.current.focus();
-          localStorage.setItem("conversation0", JSON.stringify([...conversation, userMessage,  responseMessage]));
-          
-          console.log(data);
-         })
-         .catch((err) => {
-            console.log("eer",err.message);
-            console.log(err);
-         });
+          localStorage.setItem("conversation0", JSON.stringify([...responseMessage  ]));
+        })
+        .catch((err) => {
+          console.log("eer",err.message);
+          console.log(err);
+        });
       setMessage("");
       messageListRef.current.scrollToBottom('auto');
       };
+    const parseMessage = (msg) => {
+      let responseMessage
+      if (msg.message==='text'){
+        let fullmessage = ""
+        msg.text.text.map((txt) => fullmessage += (txt + "\n") )
+        return (responseMessage={
+          message: fullmessage,
+          direction: 'incoming',
+        })
+      }
+      else if (msg.message==='payload') {
+        let json = JSON.stringify(msg)
+        let text = json.split("\"rawUrl\":{\"stringValue\":\"")[1]
+        if (text===undefined){
+          return (responseMessage = {
+            message: "Not Working Yet",
+            direction: 'incoming',
+          })
+        }
+        text = text.split("\"")[0]
+        return (responseMessage = {
+          message: text,
+          direction: 'incoming',
+          type: 'image'
+        })
+      }
+    }
     //Hardcoded load
-    useEffect(() => {
-        const timer = setTimeout(() => {
-          setMessageLoad("false")
-        }, 5000); //change 5000 to whatever time you want
-        return () => clearTimeout(timer);
-      }, [messageLoad]);
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //       setMessageLoad("false")
+    //     }, 5000); //change 5000 to whatever time you want
+    //     return () => clearTimeout(timer);
+    //   }, [messageLoad]);
       useEffect(() => {
         if (sidebarVisible) {
           setSidebarStyle({
@@ -105,8 +130,8 @@ export const Chat = ({
                           <Avatar src={'https://chatscope.io/storybook/react/static/media/joe.641da105.svg'} name={"Zoe"} size="md" />
                           : null
                         }
-                        {msg.message==='img' ?
-                        <Message.ImageContent src={'https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=600'} width={200} />
+                        {msg?.type==='image' ?
+                        <Message.ImageContent src={msg.message} width={200} />
                         : null
                         }
                         </Message>
