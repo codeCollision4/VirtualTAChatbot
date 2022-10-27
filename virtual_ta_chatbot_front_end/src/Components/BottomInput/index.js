@@ -47,7 +47,7 @@ export const BottomInput = ({
             >
                 <button onClick={closeModal}>close</button>
             </Modal> */}
-            <IconButton aria-label="Send" onClick={() => handleSend(message)} disabled={message.length==0} color={"secondary"} >
+            <IconButton aria-label="Send" onClick={() => handleSend(message)} disabled={message.length==0} color={"primary"} >
                 <SendRoundedIcon  style={{marginTop:0, paddingLeft: "0.2em",paddingRight: "0.2em",}}  />
             </IconButton>
             <Moda />

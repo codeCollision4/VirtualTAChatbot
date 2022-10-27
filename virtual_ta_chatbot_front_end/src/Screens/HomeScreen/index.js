@@ -8,6 +8,7 @@ const HomeScreen = ({themeNumber, setThemeNumber}) => {
     const [message, setMessage] = useState('')
     const [memoryNum, setMemoryNum] = useState(0)
     const [windowSize, setWindowSize] = useState(getWindowSize());
+    const [sidebarVisible, setSidebarVisible] = useState(true);
     const [conversation, setConversation] = useState([
         {
             message: "Hello, I am your vitual TA!",
@@ -63,6 +64,8 @@ const HomeScreen = ({themeNumber, setThemeNumber}) => {
             setThemeNumber={setThemeNumber}
             memory={memory}
             setConversation={setConversation}
+            setSidebarVisible={setSidebarVisible}
+            sidebarVisible={sidebarVisible}
             />
             <Chat
                 message={message}
@@ -70,6 +73,8 @@ const HomeScreen = ({themeNumber, setThemeNumber}) => {
                 conversation={conversation}
                 setConversation={setConversation}
                 height={windowSize.innerHeight}
+                setSidebarVisible={setSidebarVisible}
+                sidebarVisible={sidebarVisible}
                 />
         </div>
     )

@@ -1,13 +1,13 @@
-import {Theme0, Theme1, Theme2, Theme3} from './Colors'
+import {Theme0, Theme1, Theme2, Theme3, Theme4, Theme5} from './Colors'
 import { createTheme } from "@mui/material/styles";
 
 const setTheme = (color1, color2, color3, color4) => createTheme({
     palette: {
       primary: {
-        main: color1,
+        main: color2,//color1,
       },
       secondary:{
-        main: color2
+        main: color1
       },
       background: {
         default: color3,
@@ -15,8 +15,18 @@ const setTheme = (color1, color2, color3, color4) => createTheme({
       },
       text:{
         primary: color4,
+      },
+    },
+    components: {
+      MuiToolbar: {
+          styleOverrides: {
+              dense: {
+                  height: 64,
+                  minHeight: 64,
+              }
+          }
       }
-    }
+    },
   });
 const themes = [
     {
@@ -54,6 +64,24 @@ const themes = [
       backgroundColor: Theme3.backgroundColor,
       textColor: Theme3.textColor,
       theme: setTheme(Theme3.primaryColor, Theme3.secondaryColor, Theme3.backgroundColor, Theme3.textColor),
+    },
+    {
+      id: 4,
+      name: 'American - Light',
+      primaryColor: Theme4.primaryColor,
+      secondaryColor: Theme4.secondaryColor,
+      backgroundColor: Theme4.backgroundColor,
+      textColor: Theme4.textColor,
+      theme: setTheme(Theme4.primaryColor, Theme4.secondaryColor, Theme4.backgroundColor, Theme4.textColor),
+    },
+    {
+      id: 5,
+      name: 'American - Dark',
+      primaryColor: Theme5.primaryColor,
+      secondaryColor: Theme5.secondaryColor,
+      backgroundColor: Theme5.backgroundColor,
+      textColor: Theme5.textColor,
+      theme: setTheme(Theme5.primaryColor, Theme5.secondaryColor, Theme5.backgroundColor, Theme5.textColor),
     },
 ]
 export default themes
