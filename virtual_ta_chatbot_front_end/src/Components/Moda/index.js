@@ -2,6 +2,7 @@ import { Modal, IconButton, Typography, Box, TextField } from '@mui/material';
 import * as React from 'react';
 import { useState } from 'react';
 import FunctionsRoundedIcon from '@mui/icons-material/FunctionsRounded';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const style = {
     position: 'absolute',
@@ -20,6 +21,7 @@ export const Moda = ({}) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [copied, setCopied] = React.useState(false);
 
     const [formula, setFormula] = useState('');
     const handleChange = event => {
@@ -29,6 +31,10 @@ export const Moda = ({}) => {
         const mf = document.getElementById('formula');
         mf.setValue(event.target.value,{suppressChangeNotifications: true});
     };
+
+    const onCopy = React.useCallback(() => {
+        setCopied(true);
+    }, [])
 
     return (
         <div>
@@ -45,9 +51,12 @@ export const Moda = ({}) => {
                     Type in Latex field. For specific inputs put "\" in front. Ex: \sqrt()
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 5 }}>
-                    <math-field id="formula" virtual-keyboard-mode="auto">f(x) = \sin(x+\pi)</math-field>
+                        <math-field id="formula" virtual-keyboard-mode="auto">f(x) = \sin(x+\pi)</math-field>
                         <script src="https://unpkg.com/mathlive"></script>
-                        <TextField id="latex" label="LaTex" variant="standard" onChange={handleChange} />
+                        <TextField id="latex" label="LaTex" variant="standard" onChange={handleChange} formula={formula}/>
+                        <CopyToClipboard onCopy={onCopy} text={formula}>
+                            <button>Copy</button>
+                        </CopyToClipboard>
                     </Typography>
                 </Box>
             </Modal>
