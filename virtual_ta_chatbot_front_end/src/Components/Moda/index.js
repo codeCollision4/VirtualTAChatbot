@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import FunctionsRoundedIcon from '@mui/icons-material/FunctionsRounded';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import 'mathlive';
 
 const style = {
     position: 'absolute',
