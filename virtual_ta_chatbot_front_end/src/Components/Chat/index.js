@@ -66,6 +66,7 @@ export const Chat = ({
       };
     const parseMessage = (msg) => {
       let responseMessage
+      console.log("log",msg);
       if (msg.message==='text'){
         let fullmessage = ""
         msg.text.text.map((txt) => fullmessage += (txt + "\n") )
@@ -76,6 +77,7 @@ export const Chat = ({
       }
       else if (msg.message==='payload') {
         let json = JSON.stringify(msg)
+        console.log("loggg",json);
         let text = json.split("\"rawUrl\":{\"stringValue\":\"")[1]
         if (text===undefined){
           return (responseMessage = {
