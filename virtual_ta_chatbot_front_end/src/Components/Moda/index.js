@@ -17,7 +17,7 @@ const style = {
     p: 4,
 };
 
-export const Moda = ({}) => {
+export const Moda = ({setMessage}) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -34,6 +34,9 @@ export const Moda = ({}) => {
 
     const onCopy = React.useCallback(() => {
         setCopied(true);
+        const mf = document.getElementById('formula');
+        setMessage(mf.getValue())
+        handleClose()
     }, [])
 
     return (
@@ -47,15 +50,18 @@ export const Moda = ({}) => {
             >
                 <Box sx={style}>
                     <button onClick={handleClose}>close</button>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Type in Latex field. For specific inputs put "\" in front. Ex: \sqrt()
+                    <Typography id="modal-modal-title" variant="h6" component="h2" style={{textAlign: 'center'}}>
+                        Type in Latex field. For specific inputs put "\" in front. Ex: \sqrt()
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 5 }}>
-                        <math-field id="formula" virtual-keyboard-mode="auto">f(x) = \sin(x+\pi)</math-field>
+                        <math-field id="formula" virtual-keyboard-mode="auto"></math-field>
                         <script src="https://unpkg.com/mathlive"></script>
-                        <TextField id="latex" label="LaTex" variant="standard" onChange={handleChange} formula={formula}/>
-                        <CopyToClipboard onCopy={onCopy} text={formula}>
-                            <button>Copy</button>
+                        <TextField id="latex" label="LaTex" variant="standard" style={{marginLeft:150}} onChange={handleChange} formula={formula}/>
+                        
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 10 }}>
+                        <CopyToClipboard onCopy={onCopy} text={formula} style={{marginLeft:220}}>
+                            <button>Enter</button>
                         </CopyToClipboard>
                     </Typography>
                 </Box>
