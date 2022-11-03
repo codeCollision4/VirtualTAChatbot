@@ -1,0 +1,25 @@
+{
+    "QuestionsList":[
+        {"title": "Algorithms",
+        "questions":[
+            "What is o^2?",
+            "What are the different sorting algorithms?",
+            "What is binary sort?"
+        ]
+        },
+        {
+        "title": "Class Details",
+        "questions":[
+            "When is exam 1?",
+            "When does this class meet?",
+            "When is the TA's office hours?"
+        ]
+        },
+        {
+        "title": "Resources",
+        "questions":[
+            "Where can I go to find resources related to insertion sort?"
+        ]
+        }
+    ]
+}

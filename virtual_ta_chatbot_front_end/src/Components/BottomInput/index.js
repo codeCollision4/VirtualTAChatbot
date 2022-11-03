@@ -10,6 +10,7 @@ export const BottomInput = ({
     message,
     setMessage,
     inputRef,
+    showSnackFunc
 }) => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
     function openModal() {
@@ -41,16 +42,10 @@ export const BottomInput = ({
                 }}
                 sendButton={false}
             />
-            {/* <Modal 
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-            >
-                <button onClick={closeModal}>close</button>
-            </Modal> */}
             <IconButton aria-label="Send" onClick={() => handleSend(message)} disabled={message.length==0} color={"primary"} >
                 <SendRoundedIcon  style={{marginTop:0, paddingLeft: "0.2em",paddingRight: "0.2em",}}  />
             </IconButton>
-            <Moda />
+            <Moda message={message} setMessage={setMessage} showSnackFunc={showSnackFunc} />
         </div>
     )
 }
