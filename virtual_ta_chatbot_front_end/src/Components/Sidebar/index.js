@@ -6,7 +6,6 @@ import SidebarContent from 'Assets/SidebarContent.json'
 
 export const SidebarSection = ({sidebarStyle, setMessage}) => {
     const theme = useTheme();
-    console.log("t",theme)
     const buttonStyle = {
         width:'100%',
         justifyContent: "flex-start",
