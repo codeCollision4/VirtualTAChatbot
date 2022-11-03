@@ -102,15 +102,15 @@ export const Chat = ({
         if (sidebarVisible) {
           setSidebarStyle({
             display: "flex",
-            flexBasis: "auto",
-            width: "40%",
-            maxWidth: "40%"
+            // flexBasis: "auto",
+            width: "100%",
+            // width: "40%",
+            // maxWidth: "40%"
           });
         } else {
           setSidebarStyle({
             width: "0%",
             maxWidth: "0%",
-            color:'green'
           });
           // setConversationContentStyle({});
           // setConversationAvatarStyle({});
@@ -120,7 +120,7 @@ export const Chat = ({
     return(
         <div style={{ position: 'fixed', bottom: 0, width: '100%', height: height - 64, flex:1 }}>
             <MainContainer responsive>
-                <SidebarSection sidebarStyle={sidebarStyle} />
+                <SidebarSection sidebarStyle={sidebarStyle} setMessage={setMessage} />
                 <ChatContainer>       
                   <MessageList scrollBehavior="auto" ref={messageListRef} >
                   <MessageSeparator content={Date().toLocaleString()} />

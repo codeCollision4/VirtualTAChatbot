@@ -13,8 +13,9 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: "60%",
-    height: "50%",
     maxWidth:600,
+    height: "40%",
+    maxHeight: 450,
     bgcolor: 'background.paper',
     // border: '2px soslid #000',
     // boxShadow: 24,
@@ -67,7 +68,7 @@ export const Moda = ({showSnackFunc, message, setMessage}) => {
                         <script src="https://unpkg.com/mathlive"></script>
                         <TextField  id="latex" label="LaTex" variant="standard" onChange={handleChange} formula={formula}/>
                     </Typography>
-                    <Grid style={{marginTop:5}} >
+                    <Grid style={{marginVertical:5}} >
                         <CopyToClipboard onCopy={onCopy} text={formula}>
                             <Button onClick={() => showSnackFunc("Equation Copied Into Clipboard")} >Copy</Button>
                         </CopyToClipboard>

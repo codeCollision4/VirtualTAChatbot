@@ -42,7 +42,7 @@ export const Theme4 = {
 export const Theme5 = {
     primaryColor: '#B31942',
     secondaryColor: '#0A3161',
-    backgroundColor: '#454545',
+    backgroundColor: '#a1a09d',
     textColor: '#ffff',
     elementColor: '#1976d2',
 };

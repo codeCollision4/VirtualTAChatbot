@@ -46,6 +46,16 @@ $sidebar-left-bg-color:var(--background_color);
 
 $main-container-conversation-list-border-right: (solid 1px var(--primary_color));
 
+$expansion-panel-header-color: var(--text_color);
+$expansion-panel-border: solid 0px; //$default-border-color
+$expansion-panel-bg-color:var(--background_color);
+$expansion-panel-color:var(--secondary_color);
+// $expansion-panel-header-color:#c42fb5;
+$expansion-panel-header-bg-color:var(--background_color);
+$expansion-panel-header-open-bg-color:var(--primary_color);
+$expansion-panel-header-hover-bg-color:var(--primary_color);
+$expansion-panel-content-bg-color:var(--background_color);
+
 @import "helpers/functions";
 @import "components/main-container";
 @import "components/message";

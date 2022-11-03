@@ -1,16 +1,27 @@
 import {Sidebar, ExpansionPanel  } from '@chatscope/chat-ui-kit-react';
+import {Button, Link } from '@mui/material';
 import React,{useState} from 'react'
+import SidebarContent from 'Assets/SidebarContent.json'
 
-export const SidebarSection = ({sidebarStyle}) => {
+export const SidebarSection = ({sidebarStyle, setMessage}) => {
+    const buttonStyle = {
+        width:'100%',
+        justifyContent: "flex-start",
+        textAlign:'left',
+        flex:1,
+        textTransform: 'none'
+    }
     return(
         <Sidebar position="left" scrollable={false} style={sidebarStyle}>
-            <ExpansionPanel open title="Localization">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sagittis dictum tortor, sed mollis justo lacinia eget. In pharetra volutpat eros, in tempus est pellentesque quis. Vivamus pretium sodales ex at suscipit. In porta libero turpis, sit amet mattis quam vestibulum vel. In non felis eu enim hendrerit fringilla ut in lacus. Quisque leo tortor, feugiat vitae sagittis eget, mattis quis dui. Cras bibendum luctus finibus. Mauris id neque nec nunc malesuada eleifend maximus et enim.</p>
-                <p>Duis aliquam vestibulum cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elit nunc, eleifend a pulvinar eget, sodales ut lectus. Integer eu nibh velit. Phasellus maximus malesuada nisi in aliquam. In convallis orci id quam aliquam bibendum. Integer consectetur fermentum molestie. Cras id mi efficitur, porta quam et, laoreet neque.</p>                  
-                <p>Nam dapibus nibh nec felis porta lobortis. Nulla risus nibh, sollicitudin eget sagittis quis, posuere quis diam. Morbi sagittis dignissim turpis nec vehicula. In accumsan finibus eros, in pellentesque sem. Nullam id sapien et erat pellentesque feugiat nec ut justo. Pellentesque ut lorem pulvinar, condimentum velit non, condimentum lectus. Donec aliquam tincidunt posuere. Vestibulum sollicitudin eget magna sodales facilisis. Suspendisse potenti. Suspendisse et magna risus. Vivamus orci elit, rutrum vel rhoncus ut, ullamcorper non felis. Pellentesque aliquam, erat sed aliquam auctor, ex dolor ultrices ipsum, eu volutpat dui erat at dolor. Praesent viverra nisl eget enim facilisis ultricies. Vivamus ultrices, turpis et luctus lacinia, mauris diam fringilla mauris, sit amet maximus est diam sed eros. Nulla maximus pellentesque diam quis mattis.</p>                  
-                <p>Integer pretium, velit vitae mollis commodo, magna odio semper ex, nec pharetra enim augue non tortor. Curabitur aliquet in tortor tristique sagittis. Praesent sed justo mattis, ullamcorper quam vitae, mollis lacus. Mauris sagittis lectus eget sodales cursus. Curabitur eget nisi tristique, malesuada sem sed, feugiat sem. Etiam magna sapien, pulvinar ut leo in, viverra luctus orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed metus sem, aliquet finibus dapibus ullamcorper, pretium sed nibh. Donec finibus, magna et tristique dictum, ex sapien efficitur eros, eu porttitor nunc sapien nec ligula. Donec quis dolor at nunc faucibus pellentesque vel sit amet dolor. Proin et risus gravida, pharetra magna sit amet, consequat ex. Praesent porttitor, erat sodales tristique dictum, mi tellus accumsan mi, quis blandit nunc magna in neque. Phasellus id consectetur dui, quis pretium arcu.</p>            
-                <p>Integer rutrum semper augue ut ullamcorper. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras condimentum lorem sit amet dui sollicitudin consectetur. Vivamus ac rhoncus massa. Sed aliquam pretium vehicula. Maecenas vitae consectetur est, imperdiet laoreet ex. Sed tortor purus, dignissim sed nisi sed, ornare rhoncus risus. Donec ultrices metus sit amet eleifend sodales. Praesent ac leo a arcu dapibus laoreet. Nulla finibus orci a odio fringilla ullamcorper. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque semper metus eleifend dapibus consequat. Donec consequat congue ligula nec fermentum. Fusce lobortis ipsum sed lacus sodales, at elementum leo ultricies.</p>                    
-            </ExpansionPanel>
+            {SidebarContent.QuestionsList.map((content, index) =>
+                    <ExpansionPanel open={false} title={content.title}>
+                        {content.questions.map((question, index) =>
+                            <Button style={buttonStyle} onClick={() => setMessage(question)}>{question}</Button>
+                            // <Link style={buttonStyle} color="primary" onClick={() => setMessage(question)}>{question}{"\n"}</Link>
+                        )}
+                    </ExpansionPanel>
+                    // <div style={{marginTop:10}} />
+            )}
         </Sidebar>
     )
 }
