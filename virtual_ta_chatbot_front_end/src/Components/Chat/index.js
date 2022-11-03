@@ -15,6 +15,7 @@ export const Chat = ({
   height,
   setSidebarVisible,
   sidebarVisible,
+  showSnackFunc
 }) => {
     const inputRef = useRef();
     const messageListRef = useRef();
@@ -22,7 +23,6 @@ export const Chat = ({
     const [inputDisabled, setInputDisabled] = useState(false)
 
     const [sidebarStyle, setSidebarStyle] = useState({});
-
     const handleSend = message => {
       if (message.length===0)
         return
@@ -141,7 +141,8 @@ export const Chat = ({
                   </div>
                   </MessageList>
                   <div as="MessageInput" >
-                    <BottomInput handleSend={handleSend} message={message} setMessage={setMessage} inputRef={inputRef}  />
+                    <BottomInput handleSend={handleSend} message={message} setMessage={setMessage} inputRef={inputRef}
+                    showSnackFunc={showSnackFunc} />
                   </div>       
                 </ChatContainer>
             </MainContainer>

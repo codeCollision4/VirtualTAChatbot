@@ -15,6 +15,7 @@ const setTheme = (color1, color2, color3, color4) => createTheme({
       },
       text:{
         primary: color4,
+        secondary: color1,
       },
     },
     components: {
@@ -25,7 +26,7 @@ const setTheme = (color1, color2, color3, color4) => createTheme({
                   minHeight: 64,
               }
           }
-      }
+      },
     },
   });
 const themes = [

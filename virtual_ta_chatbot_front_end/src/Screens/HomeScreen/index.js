@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import style from './style.css'
-import {Header, Chat, TextInput} from 'Components'
+import {Header, Chat, TextInput, SnackbarComponent} from 'Components'
 //Chatbot main screen
 const HomeScreen = ({themeNumber, setThemeNumber}) => {
     //How far back the history should go, just change the number
     const MAX_HISTORY = 5
+    const [showSnack, setShowSnack] = useState(false)
+    const [snackMessage, setSnackMessage] = useState("Default Snack")
     const [message, setMessage] = useState('')
     const [memoryNum, setMemoryNum] = useState(0)
     const [windowSize, setWindowSize] = useState(getWindowSize());
@@ -55,9 +57,15 @@ const HomeScreen = ({themeNumber, setThemeNumber}) => {
     function getWindowSize() {
         const {innerWidth, innerHeight} = window;
         return {innerWidth, innerHeight};
-    }  
+    }
+    const showSnackFunc = (msg) => {
+      setShowSnack(true)
+      setSnackMessage(msg)
+      // console.log("hi",msg)
+    }
     return (
         <div clasname="Main">
+            <SnackbarComponent open={showSnack} setOpen={setShowSnack} message={snackMessage} />
             <Header
             title="Virtual TA" 
             themeNumber={themeNumber}
@@ -75,6 +83,7 @@ const HomeScreen = ({themeNumber, setThemeNumber}) => {
                 height={windowSize.innerHeight}
                 setSidebarVisible={setSidebarVisible}
                 sidebarVisible={sidebarVisible}
+                showSnackFunc={showSnackFunc}
                 />
         </div>
     )
