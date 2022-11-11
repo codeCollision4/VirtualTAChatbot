@@ -21,13 +21,7 @@
     "sass": "^1.45.0",
     "web-vitals": "^2.1.4"
   },
-  "engines": {
-    "yarn": "1.x",
-    "node": "18.x"
-  },
   "scripts": {
-    "postinstall": "npm run webpack",
-    "webpack": "webpack",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",

@@ -1,14 +1,8 @@
 {
   "scripts": {
-    "postinstall": "npm run webpack",
-    "webpack": "webpack",
     "server": "nodemon --quiet virtual_ta_chatbot_back_end",
     "client": "npm start --prefix virtual_ta_chatbot_front_end",
     "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
-  "engines": {
-    "yarn": "1.x",
-    "node": "18.x"
   },
   "devDependencies": {
     "concurrently": "^7.4.0",
