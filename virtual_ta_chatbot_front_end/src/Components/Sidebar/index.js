@@ -10,7 +10,7 @@ export const SidebarSection = ({sidebarStyle, setMessage}) => {
         width:'100%',
         justifyContent: "flex-start",
         textAlign:'left',
-        flex:1,
+        flex:0,
         textTransform: 'none',
         color: theme.palette.text.primary
     }

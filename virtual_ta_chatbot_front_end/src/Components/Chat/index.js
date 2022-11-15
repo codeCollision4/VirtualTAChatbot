@@ -1,6 +1,7 @@
 import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Loader, MessageSeparator, Avatar, Sidebar, Search } from '@chatscope/chat-ui-kit-react';
 import { Loading, Separator, BottomInput, SidebarSection } from 'Components'
+import {Link, Alert} from '@mui/material';
 import { useRef, useState, useEffect } from 'react';
 import { flatten } from 'flatten-anything'
 // import _ from 'lodash'
@@ -23,6 +24,8 @@ export const Chat = ({
     const [inputDisabled, setInputDisabled] = useState(false)
 
     const [sidebarStyle, setSidebarStyle] = useState({});
+    const [chatContainerStyle, setChatContainerStyle] = useState({});
+    const isMobile = window.screen.width >= 1280 ? false : true
     const handleSend = message => {
       if (message.length===0)
         return
@@ -77,18 +80,32 @@ export const Chat = ({
       else if (msg.message==='payload') {
         let json = JSON.stringify(msg)
         let text = json.split("\"rawUrl\":{\"stringValue\":\"")[1]
-        if (text===undefined){
+        let link = json.split("\"link\":{\"stringValue\":\"")[1]
+        if (link!==undefined){
+          link = link.split("\"")[0]
           return (responseMessage = {
-            message: "Not Working Yet",
+            message: link,
+            link: link,
             direction: 'incoming',
+            type: 'link'
           })
         }
-        text = text.split("\"")[0]
-        return (responseMessage = {
-          message: text,
-          direction: 'incoming',
-          type: 'image'
-        })
+        else if (text!==undefined){
+          text = text.split("\"")[0]
+          return (responseMessage = {
+            message: text,
+            direction: 'incoming',
+            type: 'image'
+          })
+        
+        }
+        else{
+          return (responseMessage = {
+            message: "Error",
+            direction: 'incoming',
+            type: "error"
+          })
+        }
       }
     }
     //Hardcoded load
@@ -102,26 +119,29 @@ export const Chat = ({
         if (sidebarVisible) {
           setSidebarStyle({
             display: "flex",
-            // flexBasis: "auto",
-            width: "100%",
-            // width: "40%",
-            // maxWidth: "40%"
+            flexBasis: "auto",
+            width: isMobile ? "100%" : "0%",
+            maxWidth: isMobile ? "100%" : "0%"
+          });
+          setChatContainerStyle({
+            display: isMobile ? "none" : "flex" 
           });
         } else {
-          setSidebarStyle({
-            width: "0%",
-            maxWidth: "0%",
-          });
-          // setConversationContentStyle({});
-          // setConversationAvatarStyle({});
-          // setChatContainerStyle({});
+          setSidebarStyle({});
+          setChatContainerStyle({});
         }
       }, [sidebarVisible, setSidebarVisible]);
+      const componentDecorator = (href, text, key) => (
+        <a href={href} key={key} target="_blank" color='yellow'> 
+          {text}
+        </a>
+     );
     return(
         <div style={{ position: 'fixed', bottom: 0, width: '100%', height: height - 64, flex:1 }}>
             <MainContainer responsive>
                 <SidebarSection sidebarStyle={sidebarStyle} setMessage={setMessage} />
-                <ChatContainer>       
+                {sidebarVisible}
+                <ChatContainer style={chatContainerStyle}>       
                   <MessageList scrollBehavior="auto" ref={messageListRef} >
                   <MessageSeparator content={Date().toLocaleString()} />
                     {conversation.map((msg, index) =>
@@ -132,7 +152,17 @@ export const Chat = ({
                         }
                         {msg?.type==='image' ?
                         <Message.ImageContent src={msg.message} width={200} />
-                        : null
+                        :
+                        msg?.type==='link'?
+                        <Message.CustomContent>
+                        <Link href={msg.link} target="_blank" rel="noopener">
+                          {msg.link}
+                        </Link>
+                        </Message.CustomContent>
+                        :
+                        msg?.type==='error'? null
+                        :
+                        null
                         }
                         </Message>
                     )}

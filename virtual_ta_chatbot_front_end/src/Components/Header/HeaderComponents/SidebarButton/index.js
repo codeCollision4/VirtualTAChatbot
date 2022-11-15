@@ -1,5 +1,6 @@
 import {IconButton} from '@mui/material';
 import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 // import React,{useState} from 'react'
 export const SidebarButton = ({setSidebarVisible, sidebarVisible}) => {
     const sidebarClick = () => {
@@ -13,7 +14,10 @@ export const SidebarButton = ({setSidebarVisible, sidebarVisible}) => {
             onClick={sidebarClick}
             sx={{ mr: 2 }}
           >
-            <QuestionAnswerOutlinedIcon />
+            {
+            !sidebarVisible ?
+            <QuestionAnswerOutlinedIcon />:<QuestionAnswerIcon />
+            }
         </IconButton>
     )
 }
