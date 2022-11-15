@@ -2,7 +2,7 @@
     "QuestionsList":[
         {"title": "Algorithms",
         "questions":[
-            "What is o^2?",
+            "What is o(n^2)?",
             "What are the different sorting algorithms?",
             "What is binary sort?"
         ]
