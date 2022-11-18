@@ -3,7 +3,8 @@ import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Loade
 import { Loading, Separator, BottomInput, SidebarSection } from 'Components'
 import {Link, Alert} from '@mui/material';
 import { useRef, useState, useEffect } from 'react';
-import { flatten } from 'flatten-anything'
+import { flatten } from 'flatten-anything';
+import config from 'config';
 // import _ from 'lodash'
 
 // import TextInput from '../TextInput'
@@ -40,7 +41,7 @@ export const Chat = ({
       setConversation([...conversation, userMessage]);
       let responseMessage = [...conversation]
       responseMessage.push(userMessage)
-      fetch('http://localhost:5000/text-input', {
+      fetch(`${config.apiUrl}/text-input`, {
         method: 'POST',
         body: JSON.stringify({
             text: message,

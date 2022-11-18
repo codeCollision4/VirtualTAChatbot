@@ -27,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "web:build": "webpack --mode production",
+    "web:start": "webpack-dev-server --open"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +53,15 @@
     "craco-alias": "^3.0.1",
     "gh-pages": "^4.0.0",
     "sass": "^1.55.0",
-    "text-table": "^0.2.0"
+    "text-table": "^0.2.0",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "html-webpack-plugin": "^3.2.0",
+    "path": "^0.12.7",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
   }
 }
