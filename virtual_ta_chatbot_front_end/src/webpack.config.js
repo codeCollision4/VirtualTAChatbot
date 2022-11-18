@@ -1,4 +1,4 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+// var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -13,9 +13,9 @@ module.exports = {
             }
         ]
     },
-    plugins: [new HtmlWebpackPlugin({
-        template: './src/index.html'
-    })],
+    // plugins: [new HtmlWebpackPlugin({
+    //     template: './src/index.html'
+    // })],
     devServer: {
         historyApiFallback: true
     },

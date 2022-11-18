@@ -4,7 +4,7 @@ import { Loading, Separator, BottomInput, SidebarSection } from 'Components'
 import {Link, Alert} from '@mui/material';
 import { useRef, useState, useEffect } from 'react';
 import { flatten } from 'flatten-anything';
-import config from 'config';
+const config = require("../../webpack.config");
 // import _ from 'lodash'
 
 // import TextInput from '../TextInput'
@@ -41,7 +41,8 @@ export const Chat = ({
       setConversation([...conversation, userMessage]);
       let responseMessage = [...conversation]
       responseMessage.push(userMessage)
-      fetch(`${config.apiUrl}/text-input`, {
+      //${config.apiUrl}
+      fetch("http://localhost:5000/routes/text-input", {
         method: 'POST',
         body: JSON.stringify({
             text: message,

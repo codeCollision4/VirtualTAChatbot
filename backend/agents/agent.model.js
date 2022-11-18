@@ -28,7 +28,7 @@ const uuid = require("uuid");
 //   return result;
 // })
   
-module.exports = getAgentResponse;
+
 // module.exports = (app, jsonParser) => {
 //   app.post("/text-input", jsonParser, async (req, res) => {
 //     getAgentResponse(req.body.text)
@@ -62,3 +62,5 @@ async function getAgentResponse(userMessage) {
     console.log(`Response: ${result.fulfillmentText}`);
     return result;
 }
+
+module.exports = getAgentResponse;
