@@ -10,7 +10,7 @@ const HomeScreen = ({themeNumber, setThemeNumber}) => {
     const [message, setMessage] = useState('')
     const [memoryNum, setMemoryNum] = useState(0)
     const [windowSize, setWindowSize] = useState(getWindowSize());
-    const [sidebarVisible, setSidebarVisible] = useState(true);
+    const [sidebarVisible, setSidebarVisible] = useState(false);
     const [conversation, setConversation] = useState([
         {
             message: "Hello, I am your vitual TA!",
