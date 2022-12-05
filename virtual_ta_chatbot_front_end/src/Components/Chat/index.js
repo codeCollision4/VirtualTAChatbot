@@ -51,6 +51,7 @@ export const Chat = ({
       })
          .then((response) => response.json())
          .then((data) => {
+          console.log("asa",data.intent);
           data.fulfillmentMessages.map((msg, index) => {
             responseMessage.push(parseMessage(msg))
           })
@@ -82,6 +83,7 @@ export const Chat = ({
         let text = json.split("\"rawUrl\":{\"stringValue\":\"")[1]
         let link = json.split("\"link\":{\"stringValue\":\"")[1]
         if (link!==undefined){
+          console.log("link");
           link = link.split("\"")[0]
           return (responseMessage = {
             message: link,
@@ -91,6 +93,7 @@ export const Chat = ({
           })
         }
         else if (text!==undefined){
+          console.log("img");
           text = text.split("\"")[0]
           return (responseMessage = {
             message: text,
@@ -100,10 +103,10 @@ export const Chat = ({
         
         }
         else{
+          console.log("err", text);
           return (responseMessage = {
             message: "Error",
             direction: 'incoming',
-            type: "error"
           })
         }
       }
@@ -155,7 +158,7 @@ export const Chat = ({
                         :
                         msg?.type==='link'?
                         <Message.CustomContent>
-                        <Link href={msg.link} target="_blank" rel="noopener">
+                        <Link color="text.primary" href={msg.link} target="_blank" rel="noopener">
                           {msg.link}
                         </Link>
                         </Message.CustomContent>
