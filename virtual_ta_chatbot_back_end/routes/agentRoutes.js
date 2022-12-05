@@ -3,6 +3,7 @@ require("dotenv").config();
 const dialogflow = require("@google-cloud/dialogflow")
 const uuid = require("uuid")
 
+let contexts;
 const getAgentResponse = (async (userMessage) => {
   const sessionId = uuid.v4();
   const CREDENTIALS = JSON.parse(process.env.CREDENTIALS);
@@ -23,9 +24,16 @@ const getAgentResponse = (async (userMessage) => {
     },
   };
 
+  if (contexts && contexts.length > 0) {
+    request.queryParams = {
+      contexts: contexts,
+    };
+  }
+
   const responses = await sessionClient.detectIntent(request);
   const result = responses[0].queryResult;
   console.log(`Response: ${result.fulfillmentText}`);
+  contexts = result.outputContexts
   return result;
 })
   
