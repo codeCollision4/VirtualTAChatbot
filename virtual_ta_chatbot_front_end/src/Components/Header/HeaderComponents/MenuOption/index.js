@@ -1,12 +1,14 @@
 import {ListItemButton, ListItemIcon, SwipeableDrawer, Box, MenuItem, ListItem, List, ListItemText, Divider, Collapse, IconButton} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HistoryIcon from '@mui/icons-material/History';
-import {HistoryMenu} from './'
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+import {HistoryMenu, AboutUsModal} from '../'
 import React,{useState, useEffect} from 'react'
 import { useTheme } from "@mui/material/styles";
 
 export const MenuOption = ({memory, setConversation}) => {
     const [open, setOpen] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
     const [expanded, setExpanded] = useState(false)
     const [historyShow, setHistoryShow] = useState(false)
     const [currentMemory, setCurrentMemory] = useState()
@@ -24,6 +26,9 @@ export const MenuOption = ({memory, setConversation}) => {
     const historyPress = () => {
         setExpanded(expanded=> !expanded)
     }
+    const aboutUsPress = () => {
+      setModalOpen(true)
+    }
     const historyOptionPress = (mem) => {
       setConversation(mem)
       setOpen(false)
@@ -34,6 +39,7 @@ export const MenuOption = ({memory, setConversation}) => {
           role="presentation"
           color="inherit"
         >
+          <AboutUsModal open={modalOpen} setOpen={setModalOpen} />
           <List>
               <ListItem >
                 <ListItemButton onClick={historyPress} >
@@ -42,6 +48,15 @@ export const MenuOption = ({memory, setConversation}) => {
                    />
                   </ListItemIcon>
                   <ListItemText primary={'History'} />
+                </ListItemButton>
+            </ListItem>
+            <ListItem >
+                <ListItemButton onClick={aboutUsPress} >
+                  <ListItemIcon  >
+                   <HelpOutlineOutlinedIcon style={{ color: theme.palette.text.primary }} 
+                   />
+                  </ListItemIcon>
+                  <ListItemText primary={'About Us'} />
                 </ListItemButton>
             </ListItem>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
