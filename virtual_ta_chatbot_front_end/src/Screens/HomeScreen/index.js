@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import style from './style.css'
-import {Header, Chat, TextInput, SnackbarComponent} from 'Components'
+import {Header, Chat, SnackbarComponent} from 'Components'
 //Chatbot main screen
 const HomeScreen = ({themeNumber, setThemeNumber}) => {
     //How far back the history should go, just change the number
@@ -8,12 +7,11 @@ const HomeScreen = ({themeNumber, setThemeNumber}) => {
     const [showSnack, setShowSnack] = useState(false)
     const [snackMessage, setSnackMessage] = useState("Default Snack")
     const [message, setMessage] = useState('')
-    const [memoryNum, setMemoryNum] = useState(0)
     const [windowSize, setWindowSize] = useState(getWindowSize());
     const [sidebarVisible, setSidebarVisible] = useState(false);
     const [conversation, setConversation] = useState([
         {
-            message: "Hello, I am your vitual TA!",
+            message: "Hello!\nWelcome to the Personal TA bot for Algorithms:\nAsk me anything you would like!",
             sender: "Joe",
             direction: 'incoming',
         },
@@ -22,7 +20,6 @@ const HomeScreen = ({themeNumber, setThemeNumber}) => {
       let saved //= null
       let finalMem = []
       for (let i = 0; i < MAX_HISTORY; i++) {
-        let value = localStorage.getItem("conversation" + i);
         saved = localStorage.getItem("conversation" + i)
         let initialValue = JSON.parse(saved);
         finalMem.push(initialValue)

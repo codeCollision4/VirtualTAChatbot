@@ -1,9 +1,7 @@
-import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Loader, MessageSeparator, Avatar, Sidebar, Search } from '@chatscope/chat-ui-kit-react';
-import { Loading, Separator, BottomInput, SidebarSection } from 'Components'
-import {Link, Alert} from '@mui/material';
+import { MainContainer, ChatContainer, MessageList, Message, MessageSeparator, Avatar } from '@chatscope/chat-ui-kit-react';
+import { Loading, BottomInput, SidebarSection } from 'Components'
+import {Link} from '@mui/material';
 import { useRef, useState, useEffect } from 'react';
-import { flatten } from 'flatten-anything'
 // import _ from 'lodash'
 
 // import TextInput from '../TextInput'
@@ -51,7 +49,6 @@ export const Chat = ({
       })
          .then((response) => response.json())
          .then((data) => {
-          console.log("asa",data.intent);
           data.fulfillmentMessages.map((msg, index) => {
             responseMessage.push(parseMessage(msg))
           })
@@ -60,6 +57,7 @@ export const Chat = ({
           setInputDisabled(false)
           inputRef.current.focus();
           localStorage.setItem("conversation0", JSON.stringify([...responseMessage  ]));
+          return null
         })
         .catch((err) => {
           console.log("eer",err.message);
