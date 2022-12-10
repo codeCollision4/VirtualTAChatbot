@@ -33,3 +33,10 @@ You will also need to create a `.env` file in the root directory to store your a
   2. cd VirtualTAChatbot
   3. npm run dev
   4. Access via browser: 10.176.67.70:3000/VirtualTAChatbot
+  
+## Tools Used on VM
+Node.js via npm (npm in command line)
+Google Cloud CLI (gloud in command line)
+Python 3.10 (python3 in command line)
+GitHub CL tool (gh in command line)
+Optional: Homebrew (https://brew.sh/)
